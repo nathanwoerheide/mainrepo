@@ -19,7 +19,17 @@ RUN apt-get install openssh-server -y
 RUN apt-get install -y python-software-properties python
 RUN apt-get install git -y
 
+## GUI ##
+#RUN apt-get install lubuntu-desktop -y
+#RUN sudo apt-get install xubuntu-desktop -y
+RUN apt-get install xfce4 xfce4-goodies -y
+RUN apt-get install tightvncserver -y
 
+
+## virtual systems ##
+#RUN sudo apt-get install virtualbox -y
+#RUN sudo apt-get install dkms -y
+#RUN sudo apt-get install qemu-system -y
 
 
 
