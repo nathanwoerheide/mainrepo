@@ -1,0 +1,16 @@
+---
+- name: test
+  host: 192.168.1.103
+  remote_user: root
+  #password: root
+
+  vars: 
+  user_name: root
+  user_pass: root
+
+  task:
+  	- name: make mkdir
+  	  apt: mkdir /test1-ansible
+
+
+  	  
