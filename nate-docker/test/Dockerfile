@@ -21,3 +21,5 @@ CMD ["bash"]
 
 # Expose ports.
 EXPOSE 5901
+
+#this is a test
