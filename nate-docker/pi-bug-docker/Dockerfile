@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:14.04
 MAINTAINER nwoerheide@earlyadopterlabs.com
 
 #RUN apt-get update && DEBIAN_FRONTEND-noninteractive apt-get install -yq apt-utils
@@ -14,6 +14,8 @@ RUN apt-get install debconf-utils -y
 RUN apt-get install wget -y
 RUN apt-get install openssh-server -y
 RUN apt-get install openssh-client -y
+EXPOSE 80
+EXPOSE 22
 
 VOLUME /docker-vol
 
@@ -72,6 +74,7 @@ RUN git clone --branch release-4.4-stable https://git.mozilla.org/bugzilla/bugzi
 
 RUN rm /etc/mysql/my.cnf
 ADD my.cnf /etc/mysql/
+#RUN 
 RUN service mysql restart
 ADD bugzilla.conf /etc/apache2/sites-available/
 RUN a2ensite bugzilla
@@ -86,15 +89,28 @@ ADD checksetup.sh /
 RUN chmod 755 /checksetup.sh
 RUN chmod +x /checksetup.sh
 RUN ./checksetup.sh
+RUN ./var/www/html/checksetup.pl
 RUN rm -r /var/www/html/localconfig
 ADD localconfig /var/www/html/
 
+ADD root-files/my.cnf /root/
+
+
+RUN service mysql start
+RUN service mysql restart
+ADD mysql_bugs.sh /root/
+RUN chmod 755 /root/mysql_bugs.sh
+RUN chmod +X /root/mysql_bugs.sh
 
 
 
 
 
 ###testing code###
+
+
+#RUN ./root/mysql_bugs.sh
+
 
 #RUN 
 #RUN ./var/www/html/checksetup.pl
