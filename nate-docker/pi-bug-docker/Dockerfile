@@ -108,6 +108,19 @@ RUN chmod +X /root/mysql_bugs.sh
 
 ###testing code###
 
+#
+
+
+
+RUN rm /etc/bash.bashrc
+ADD bash.bashrc /etc/
+
+
+
+
+#ADD startup.sh /etc/init.d/
+#RUN service mysql start
+#RUN service apache2 restart
 
 #RUN ./root/mysql_bugs.sh
 
