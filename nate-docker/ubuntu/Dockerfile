@@ -11,7 +11,7 @@ RUN apt-get upgrade -y
 RUN apt-get install -y
 RUN apt-get install apache2 -y
 RUN apt-get install curl -y
-#RUN apt-get install traceroute -y
+RUN apt-get install traceroute -y
 RUN curl -sSL https://get.docker.com/ubuntu | sh
 RUN apt-get install wget -y
 RUN apt-get install openvpn -y
